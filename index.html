@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Riparna Chakraborty | GTA VI Developer Portfolio</title>
+  <meta name="description" content="GTA VI / Vice City inspired developer portfolio for Riparna Chakraborty showcasing VoltTech (MERN Stack) and BidRank (Next.js, Convex, Stripe)." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=JetBrains+Mono:wght@400;600;700&family=Permanent+Marker&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="theme-sunset">
+  <div class="scanline-overlay" aria-hidden="true"></div>
+  <div class="noise-overlay" aria-hidden="true"></div>
+
+  <!-- GTA VI Real-Time WebGL2 Liquid Glass HUD Navigation (activates on scroll) -->
+  <header class="hud-nav" id="hudNav">
+    <div class="hud-nav-inner" id="hudNavInner">
+      <canvas class="lg-nav-canvas" id="navLiquidCanvas" aria-hidden="true"></canvas>
+
+      <a href="#top" class="brand-lockup" aria-label="Riparna Chakraborty Home">
+        <span class="brand-vi">VI</span>
+        <span class="brand-text">
+          <strong>RIPARNA</strong>
+          <small>LEONIDA DEV // PORTFOLIO</small>
+        </span>
+      </a>
+
+      <nav class="nav-links" aria-label="Primary Navigation">
+        <a href="#missions">MISSIONS</a>
+        <a href="#loadout">LOADOUT</a>
+        <a href="#architecture">RADAR</a>
+        <a href="#connect">SAFEHOUSE</a>
+      </nav>
+
+      <div class="hud-controls">
+        <button type="button" class="vibe-toggle" id="vibeToggle" aria-label="Switch Vice City lighting mode">
+          <span class="vibe-dot"></span>
+          <span id="vibeLabel">VICE SUNSET</span>
+        </button>
+        <div class="wanted-stars" id="wantedStars" title="Click to adjust Wanted / Stack Level" role="button" tabindex="0" aria-label="Interactive wanted stars">
+          <span class="star active">★</span>
+          <span class="star active">★</span>
+          <span class="star active">★</span>
+          <span class="star active">★</span>
+          <span class="star active">★</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO: Welcome to Leonida -->
+  <section class="hero" id="top">
+    <div class="hero-backdrop" id="heroBackdrop" aria-hidden="true">
+      <svg class="vice-scene" viewBox="0 0 1440 820" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="skyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#0b0518" />
+            <stop offset="32%" stop-color="#2b0c3f" />
+            <stop offset="62%" stop-color="#9e1b63" />
+            <stop offset="84%" stop-color="#ff5e62" />
+            <stop offset="100%" stop-color="#ffb347" />
+          </linearGradient>
+          <linearGradient id="sunGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#fff07c" />
+            <stop offset="48%" stop-color="#ff7b54" />
+            <stop offset="100%" stop-color="#ff2e93" />
+          </linearGradient>
+          <linearGradient id="waterGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#190829" />
+            <stop offset="100%" stop-color="#070410" />
+          </linearGradient>
+          <clipPath id="sunClip">
+            <circle cx="720" cy="490" r="195" />
+          </clipPath>
+        </defs>
+
+        <rect width="1440" height="620" fill="url(#skyGrad)" />
+
+        <g fill="#ffffff" class="starfield">
+          <circle cx="140" cy="90" r="1.5" />
+          <circle cx="290" cy="145" r="1.2" />
+          <circle cx="430" cy="70" r="1.8" />
+          <circle cx="610" cy="110" r="1.3" />
+          <circle cx="890" cy="80" r="1.6" />
+          <circle cx="1060" cy="130" r="1.4" />
+          <circle cx="1220" cy="75" r="1.9" />
+          <circle cx="1340" cy="155" r="1.2" />
+        </g>
+
+        <g clip-path="url(#sunClip)" class="sun-disc">
+          <circle cx="720" cy="490" r="195" fill="url(#sunGrad)" />
+          <rect x="500" y="510" width="440" height="7" fill="#3a0e42" opacity="0.7" />
+          <rect x="500" y="532" width="440" height="10" fill="#2c0b38" opacity="0.78" />
+          <rect x="500" y="558" width="440" height="13" fill="#20082c" opacity="0.86" />
+          <rect x="500" y="586" width="440" height="17" fill="#150621" opacity="0.94" />
+        </g>
+
+        <path d="M0,620 L0,545 L38,545 L38,510 L76,510 L76,552 L118,552 L118,470 L162,470 L162,535 L205,535 L205,495 L252,495 L252,555 L312,555 L312,448 L354,448 L354,515 L410,515 L410,482 L458,482 L458,560 L540,560 L540,520 L588,520 L588,568 L845,568 L845,512 L898,512 L898,460 L946,460 L946,535 L1002,535 L1002,438 L1046,438 L1046,508 L1104,508 L1104,476 L1158,476 L1158,540 L1225,540 L1225,490 L1278,490 L1278,548 L1342,548 L1342,518 L1392,518 L1392,552 L1440,552 L1440,620 Z" fill="#120722" />
+
+        <g fill="#00f0ff" opacity="0.7">
+          <rect x="130" y="485" width="4" height="18" />
+          <rect x="142" y="495" width="4" height="14" />
+          <rect x="326" y="465" width="5" height="24" />
+          <rect x="1016" y="454" width="5" height="28" />
+          <rect x="1030" y="472" width="4" height="18" />
+        </g>
+        <g fill="#ff2e93" opacity="0.75">
+          <rect x="912" y="478" width="5" height="20" />
+          <rect x="1120" y="490" width="6" height="16" />
+          <rect x="220" y="510" width="5" height="15" />
+        </g>
+
+        <rect y="618" width="1440" height="202" fill="url(#waterGrad)" />
+        <g stroke="#ff2e93" stroke-opacity="0.26" stroke-width="1">
+          <line x1="0" y1="636" x2="1440" y2="636" />
+          <line x1="0" y1="660" x2="1440" y2="660" />
+          <line x1="0" y1="692" x2="1440" y2="692" />
+          <line x1="0" y1="734" x2="1440" y2="734" />
+          <line x1="0" y1="786" x2="1440" y2="786" />
+        </g>
+        <g stroke="#00f0ff" stroke-opacity="0.2" stroke-width="1">
+          <line x1="720" y1="618" x2="720" y2="820" />
+          <line x1="620" y1="618" x2="430" y2="820" />
+          <line x1="520" y1="618" x2="140" y2="820" />
+          <line x1="820" y1="618" x2="1010" y2="820" />
+          <line x1="920" y1="618" x2="1300" y2="820" />
+        </g>
+
+        <g fill="#080312" class="palm-left">
+          <path d="M98,820 Q122,640 162,455 L178,458 Q144,645 128,820 Z" />
+          <path d="M168,458 C122,420 65,425 22,455 C72,446 118,452 162,470 Z" />
+          <path d="M170,456 C135,392 85,375 34,386 C86,396 126,418 160,464 Z" />
+          <path d="M173,454 C172,388 142,345 104,322 C132,358 152,402 166,458 Z" />
+          <path d="M175,455 C215,398 265,382 315,398 C264,406 220,425 178,464 Z" />
+          <path d="M176,460 C228,438 282,448 326,482 C276,466 226,464 176,472 Z" />
+        </g>
+
+        <g fill="#080312" class="palm-right">
+          <path d="M1340,820 Q1315,650 1272,468 L1256,472 Q1292,652 1310,820 Z" />
+          <path d="M1264,470 C1312,434 1368,438 1418,468 C1368,458 1320,464 1270,482 Z" />
+          <path d="M1262,468 C1298,404 1348,388 1402,398 C1350,408 1308,430 1272,474 Z" />
+          <path d="M1260,466 C1262,398 1292,356 1330,334 C1302,370 1280,414 1266,470 Z" />
+          <path d="M1258,468 C1216,412 1166,396 1116,412 C1168,420 1212,438 1254,476 Z" />
+          <path d="M1256,472 C1204,452 1150,462 1106,496 C1156,478 1206,478 1256,484 Z" />
+        </g>
+      </svg>
+    </div>
+
+    <div class="hero-content">
+      <div class="hero-kicker hero-anim" style="--delay: 0.05s">
+        <span class="pill-live">● ONLINE // GITHUB VERIFIED</span>
+        <span class="pill-handle">@chakrabortyriparna284-dotcom</span>
+      </div>
+
+      <div class="hero-title-wrap hero-anim" style="--delay: 0.16s">
+        <span class="giant-vi" id="giantVi" aria-hidden="true">VI</span>
+        <h1 class="hero-name">RIPARNA<br />CHAKRABORTY</h1>
+        <p class="hero-script">Welcome to the Code Vice</p>
+      </div>
+
+      <p class="hero-summary hero-anim" style="--delay: 0.28s">
+        Full-Stack Developer shipping production MERN e-commerce platforms and real-time Next.js + Convex SaaS applications with Stripe payments and clean system architecture.
+      </p>
+
+      <div class="hero-actions hero-anim" style="--delay: 0.38s">
+        <a href="#missions" class="btn btn-primary">START MISSION BRIEFING</a>
+        <a href="https://electronic-product-store.vercel.app" target="_blank" rel="noopener noreferrer" class="btn btn-cyan">LAUNCH VOLTTECH LIVE</a>
+        <a href="https://github.com/chakrabortyriparna284-dotcom" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">GITHUB PROFILE ↗</a>
+      </div>
+
+      <!-- Real-Time WebGL2 Liquid Glass Telemetry Cards -->
+      <div class="hud-telemetry-wrap hero-anim" style="--delay: 0.5s">
+        <canvas class="lg-cards-canvas" id="cardsLiquidCanvas" aria-hidden="true"></canvas>
+        <div class="hud-telemetry" id="hudTelemetry">
+          <div class="tele-card liquid-glass-card">
+            <span class="tele-label">PUBLIC REPOS</span>
+            <strong class="tele-val">02</strong>
+            <span class="tele-sub">Full-Stack Builds</span>
+          </div>
+          <div class="tele-card liquid-glass-card">
+            <span class="tele-label">GITHUB STARS</span>
+            <strong class="tele-val">02</strong>
+            <span class="tele-sub">VoltTech Store</span>
+          </div>
+          <div class="tele-card liquid-glass-card">
+            <span class="tele-label">CORE LANGUAGES</span>
+            <strong class="tele-val">TS / JS</strong>
+            <span class="tele-sub">97.4% &amp; 86.4% Split</span>
+          </div>
+          <div class="tele-card liquid-glass-card">
+            <span class="tele-label">LIVE DEPLOYMENT</span>
+            <strong class="tele-val">VERCEL</strong>
+            <span class="tele-sub">Production Ready</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MISSIONS: Featured GitHub Repositories with Official GTA VI Artwork -->
+  <main>
+    <section class="section missions-section" id="missions">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-tag">ACTIVE CONTRACTS // GITHUB REPOSITORIES</span>
+          <h2 class="section-title">FEATURED <span>MISSIONS</span></h2>
+          <p class="section-desc">Every project below is sourced directly from <a href="https://github.com/chakrabortyriparna284-dotcom?tab=repositories" target="_blank" rel="noopener noreferrer">github.com/chakrabortyriparna284-dotcom</a>. Switch briefing tabs to inspect features, architecture, and stack telemetry.</p>
+        </div>
+
+        <div class="missions-grid">
+          <article class="mission-card mission-volttech reveal" style="--reveal-delay: 0.08s">
+            <div class="mission-visual">
+              <img
+                src="https://static.wixstatic.com/media/f3d992_bc40f8b33fbf461d8fbd5dfd196a96fa~mv2.jpg"
+                alt="GTA VI Vice City sunset artwork framing Mission 01 VoltTech"
+                class="mission-img"
+                loading="eager"
+              />
+              <div class="mission-visual-overlay"></div>
+              <div class="mission-visual-sheen" aria-hidden="true"></div>
+              <div class="mission-badge-row">
+                <span class="mission-code glass-chip">MISSION 01 // CAPSTONE</span>
+                <span class="mission-status live glass-chip">★ 2 STARS • LIVE DEMO</span>
+              </div>
+              <div class="mission-visual-caption">
+                <span class="mission-repo-slug">electronic-product-store</span>
+                <h3 class="mission-title">VoltTech — Electronic Product Store</h3>
+              </div>
+            </div>
+
+            <div class="mission-tabs" role="tablist" aria-label="VoltTech briefing tabs">
+              <button type="button" class="tab-btn active" data-target="vt-overview">OVERVIEW</button>
+              <button type="button" class="tab-btn" data-target="vt-arch">ARCHITECTURE</button>
+              <button type="button" class="tab-btn" data-target="vt-stack">TELEMETRY</button>
+            </div>
+
+            <div class="mission-body">
+              <div class="tab-panel active" id="vt-overview">
+                <p>Full-stack electronic product storefront engineered with the <strong>MERN stack</strong> for a 3rd-year college evaluation and capstone presentation.</p>
+                <ul class="feature-list">
+                  <li><strong>Smart Catalog:</strong> Category filtering (Laptops, Smartphones, Audio, Wearables, Accessories), real-time search, star ratings, review counts &amp; stock badges.</li>
+                  <li><strong>Cart &amp; Checkout Engine:</strong> Live subtotal, 8% tax &amp; free shipping calculation, LocalStorage cart persistence, Buy Now flow &amp; MongoDB order records with unique Order IDs.</li>
+                  <li><strong>Auth &amp; Demo Flow:</strong> Registration/login with <code>bcryptjs</code> hashing, JWT API protection &amp; a <strong>1-Click Demo Login</strong> for instant evaluation.</li>
+                </ul>
+              </div>
+
+              <div class="tab-panel" id="vt-arch">
+                <p>Clean multi-tier repository split with formal specification and decision documentation:</p>
+                <div class="code-tree">
+                  <div><span>client/</span> — React storefront UI, product detail specs &amp; cart state</div>
+                  <div><span>server/</span> — Express.js REST API, JWT middleware &amp; MongoDB models</div>
+                  <div><span>docs/</span> — <code>SPEC.md</code> &amp; Architecture Decision Records (ADRs)</div>
+                  <div><span>seed</span> — <code>npm run seed</code> loads 8 products (MacBook Pro M3, iPhone 15 Pro, Sony WH-1000XM5, iPad, Apple Watch Ultra)</div>
+                </div>
+              </div>
+
+              <div class="tab-panel" id="vt-stack">
+                <p class="lang-title">GitHub Language Composition</p>
+                <div class="lang-bar" aria-label="Language breakdown: JavaScript 86.4%, CSS 13%, HTML 0.6%">
+                  <span style="width: 86.4%; background: #ffd166;" title="JavaScript 86.4%"></span>
+                  <span style="width: 13%; background: #ff2e93;" title="CSS 13.0%"></span>
+                  <span style="width: 0.6%; background: #00f0ff;" title="HTML 0.6%"></span>
+                </div>
+                <div class="lang-legend">
+                  <span><i style="background:#ffd166"></i>JavaScript 86.4%</span>
+                  <span><i style="background:#ff2e93"></i>CSS 13.0%</span>
+                  <span><i style="background:#00f0ff"></i>HTML 0.6%</span>
+                </div>
+                <div class="tag-cloud">
+                  <span>MongoDB</span><span>Express.js</span><span>React</span><span>Node.js</span><span>JWT</span><span>bcryptjs</span><span>Vercel</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="mission-footer">
+              <a href="https://electronic-product-store.vercel.app" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">OPEN LIVE DEMO ↗</a>
+              <a href="https://github.com/chakrabortyriparna284-dotcom/electronic-product-store" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-sm">SOURCE CODE ↗</a>
+            </div>
+          </article>
+
+          <article class="mission-card mission-bidrank reveal" style="--reveal-delay: 0.2s">
+            <div class="mission-visual">
+              <img
+                src="https://static.wixstatic.com/media/f3d992_91fa581e815b4447b764a69b69f5587b~mv2.jpg"
+                alt="GTA VI key artwork framing Mission 02 BidRank"
+                class="mission-img mission-img-top"
+                loading="eager"
+              />
+              <div class="mission-visual-overlay"></div>
+              <div class="mission-visual-sheen" aria-hidden="true"></div>
+              <div class="mission-badge-row">
+                <span class="mission-code glass-chip">MISSION 02 // REALTIME SAAS</span>
+                <span class="mission-status neon glass-chip">NEXT.JS • CONVEX • STRIPE</span>
+              </div>
+              <div class="mission-visual-caption">
+                <span class="mission-repo-slug">bidrank</span>
+                <h3 class="mission-title">BidRank — Pay-to-Rank SaaS Leaderboard</h3>
+              </div>
+            </div>
+
+            <div class="mission-tabs" role="tablist" aria-label="BidRank briefing tabs">
+              <button type="button" class="tab-btn active" data-target="br-overview">OVERVIEW</button>
+              <button type="button" class="tab-btn" data-target="br-arch">ARCHITECTURE</button>
+              <button type="button" class="tab-btn" data-target="br-stack">TELEMETRY</button>
+            </div>
+
+            <div class="mission-body">
+              <div class="tab-panel active" id="br-overview">
+                <p>Full-stack competitive SaaS leaderboard inspired by the pay-to-rank mechanic of <strong>Outbid.lol</strong>, designed for live product discovery.</p>
+                <ul class="feature-list">
+                  <li><strong>Pay-to-Rank Mechanic:</strong> Founders submit their SaaS or product to a public leaderboard where the highest-paying product claims the #1 slot.</li>
+                  <li><strong>Dynamic Outbidding:</strong> Any founder can outbid another product's current bid via Stripe Checkout to immediately climb above them on the board.</li>
+                  <li><strong>Real-Time Reactivity:</strong> Instant leaderboard rank updates powered by Convex live subscriptions without manual page reloads.</li>
+                </ul>
+              </div>
+
+              <div class="tab-panel" id="br-arch">
+                <p>Type-safe reactive serverless architecture documented in <code>bidrank.md</code>:</p>
+                <div class="code-tree">
+                  <div><span>Next.js App Router</span> — Full-stack TypeScript frontend &amp; routing</div>
+                  <div><span>Tailwind + shadcn/ui</span> — Composable, accessible interface system</div>
+                  <div><span>Convex</span> — Database, queries, mutations, actions, realtime subscriptions &amp; auth</div>
+                  <div><span>Stripe Checkout</span> — Payment sessions &amp; verified rank-bid fulfillment</div>
+                </div>
+              </div>
+
+              <div class="tab-panel" id="br-stack">
+                <p class="lang-title">GitHub Language Composition</p>
+                <div class="lang-bar" aria-label="Language breakdown: TypeScript 97.4%, JavaScript 2.2%, CSS 0.4%">
+                  <span style="width: 97.4%; background: #00f0ff;" title="TypeScript 97.4%"></span>
+                  <span style="width: 2.2%; background: #ffd166;" title="JavaScript 2.2%"></span>
+                  <span style="width: 0.4%; background: #ff2e93;" title="CSS 0.4%"></span>
+                </div>
+                <div class="lang-legend">
+                  <span><i style="background:#00f0ff"></i>TypeScript 97.4%</span>
+                  <span><i style="background:#ffd166"></i>JavaScript 2.2%</span>
+                  <span><i style="background:#ff2e93"></i>CSS 0.4%</span>
+                </div>
+                <div class="tag-cloud">
+                  <span>Next.js</span><span>TypeScript</span><span>Tailwind CSS</span><span>shadcn/ui</span><span>Convex</span><span>Stripe</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="mission-footer">
+              <a href="https://github.com/chakrabortyriparna284-dotcom/bidrank/blob/main/bidrank.md" target="_blank" rel="noopener noreferrer" class="btn btn-cyan btn-sm">READ SPEC DOC ↗</a>
+              <a href="https://github.com/chakrabortyriparna284-dotcom/bidrank" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-sm">SOURCE CODE ↗</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- LOADOUT: GTA Character Stats & Tech Wheel -->
+    <section class="section loadout-section" id="loadout">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-tag">CHARACTER ATTRIBUTES // VERIFIED STACK</span>
+          <h2 class="section-title">TECH <span>LOADOUT</span></h2>
+          <p class="section-desc">Filter Riparna's real-world repository stack by domain — every skill listed is backed by production code in VoltTech or BidRank.</p>
+        </div>
+
+        <div class="loadout-filters reveal" role="group" aria-label="Filter tech stack">
+          <button type="button" class="filter-chip active" data-filter="all">ALL GEAR</button>
+          <button type="button" class="filter-chip" data-filter="frontend">FRONTEND</button>
+          <button type="button" class="filter-chip" data-filter="backend">BACKEND &amp; DB</button>
+          <button type="button" class="filter-chip" data-filter="commerce">PAYMENTS &amp; AUTH</button>
+        </div>
+
+        <div class="loadout-grid" id="loadoutGrid">
+          <div class="stat-card reveal" data-category="frontend" style="--reveal-delay: 0.05s">
+            <div class="stat-top">
+              <strong>TypeScript &amp; JavaScript</strong>
+              <span class="stat-source">BidRank (97.4%) • VoltTech (86.4%)</span>
+            </div>
+            <div class="gta-bars" aria-hidden="true">
+              <span class="filled" style="--bar-i: 0"></span>
+              <span class="filled" style="--bar-i: 1"></span>
+              <span class="filled" style="--bar-i: 2"></span>
+              <span class="filled" style="--bar-i: 3"></span>
+              <span class="filled" style="--bar-i: 4"></span>
+            </div>
+            <p>End-to-end typed SaaS apps and full-stack JavaScript architectures.</p>
+          </div>
+
+          <div class="stat-card reveal" data-category="frontend" style="--reveal-delay: 0.12s">
+            <div class="stat-top">
+              <strong>React &amp; Next.js (App Router)</strong>
+              <span class="stat-source">VoltTech • BidRank</span>
+            </div>
+            <div class="gta-bars" aria-hidden="true">
+              <span class="filled" style="--bar-i: 0"></span>
+              <span class="filled" style="--bar-i: 1"></span>
+              <span class="filled" style="--bar-i: 2"></span>
+              <span class="filled" style="--bar-i: 3"></span>
+              <span class="filled" style="--bar-i: 4"></span>
+            </div>
+            <p>Dynamic catalogs, live leaderboards, interactive carts &amp; modern routing.</p>
+          </div>
+
+          <div class="stat-card reveal" data-category="frontend" style="--reveal-delay: 0.19s">
+            <div class="stat-top">
+              <strong>Tailwind CSS &amp; shadcn/ui</strong>
+              <span class="stat-source">BidRank • Custom CSS in VoltTech</span>
+            </div>
+            <div class="gta-bars" aria-hidden="true">
+              <span class="filled" style="--bar-i: 0"></span>
+              <span class="filled" style="--bar-i: 1"></span>
+              <span class="filled" style="--bar-i: 2"></span>
+              <span class="filled" style="--bar-i: 3"></span>
+              <span style="--bar-i: 4"></span>
+            </div>
+            <p>Component-driven design systems and responsive product interfaces.</p>
+          </div>
+
+          <div class="stat-card reveal" data-category="backend" style="--reveal-delay: 0.26s">
+            <div class="stat-top">
+              <strong>Node.js, Express &amp; MongoDB</strong>
+              <span class="stat-source">VoltTech MERN Capstone</span>
+            </div>
+            <div class="gta-bars" aria-hidden="true">
+              <span class="filled" style="--bar-i: 0"></span>
+              <span class="filled" style="--bar-i: 1"></span>
+              <span class="filled" style="--bar-i: 2"></span>
+              <span class="filled" style="--bar-i: 3"></span>
+              <span style="--bar-i: 4"></span>
+            </div>
+            <p>RESTful APIs, seeded product catalogs, and persistent order workflows.</p>
+          </div>
+
+          <div class="stat-card reveal" data-category="backend" style="--reveal-delay: 0.33s">
+            <div class="stat-top">
+              <strong>Convex Realtime Backend</strong>
+              <span class="stat-source">BidRank</span>
+            </div>
+            <div class="gta-bars" aria-hidden="true">
+              <span class="filled" style="--bar-i: 0"></span>
+              <span class="filled" style="--bar-i: 1"></span>
+              <span class="filled" style="--bar-i: 2"></span>
+              <span class="filled" style="--bar-i: 3"></span>
+              <span style="--bar-i: 4"></span>
+            </div>
+            <p>Queries, mutations, actions, reactive live subscriptions &amp; integrated auth.</p>
+          </div>
+
+          <div class="stat-card reveal" data-category="commerce" style="--reveal-delay: 0.4s">
+            <div class="stat-top">
+              <strong>Stripe Checkout, JWT &amp; bcryptjs</strong>
+              <span class="stat-source">BidRank • VoltTech</span>
+            </div>
+            <div class="gta-bars" aria-hidden="true">
+              <span class="filled" style="--bar-i: 0"></span>
+              <span class="filled" style="--bar-i: 1"></span>
+              <span class="filled" style="--bar-i: 2"></span>
+              <span class="filled" style="--bar-i: 3"></span>
+              <span style="--bar-i: 4"></span>
+            </div>
+            <p>Secure password hashing, token-protected endpoints &amp; live checkout flows.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ARCHITECTURE RADAR: Dual Paradigm Comparison -->
+    <section class="section radar-section" id="architecture">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-tag">TACTICAL MINIMAP // SYSTEM DESIGN</span>
+          <h2 class="section-title">ENGINEERING <span>RADAR</span></h2>
+        </div>
+
+        <div class="radar-board reveal">
+          <div class="radar-col">
+            <div class="radar-pill cyan">PARADIGM 01 // REST + DOCUMENT DB</div>
+            <h3>VoltTech Commerce Architecture</h3>
+            <p>Decoupled <code>client/</code> and <code>server/</code> architecture backed by MongoDB, documented with <code>SPEC.md</code> and Architecture Decision Records (ADRs).</p>
+            <ul>
+              <li>Client-side LocalStorage cart synced into MongoDB orders</li>
+              <li>Automated tax (8%) &amp; free shipping checkout calculation</li>
+              <li>Seedable database script (<code>npm run seed</code>) &amp; 1-Click Demo Login</li>
+            </ul>
+          </div>
+
+          <div class="radar-center" aria-hidden="true">
+            <div class="radar-ring">
+              <div class="radar-sweep"></div>
+              <span class="radar-blip b1"></span>
+              <span class="radar-blip b2"></span>
+              <span class="radar-core">VI</span>
+            </div>
+          </div>
+
+          <div class="radar-col">
+            <div class="radar-pill magenta">PARADIGM 02 // REACTIVE SERVERLESS</div>
+            <h3>BidRank Realtime SaaS Architecture</h3>
+            <p>Event-driven Next.js App Router + Convex backend engineered for instant competitive ranking updates and Stripe Checkout monetization.</p>
+            <ul>
+              <li>Live Convex subscriptions broadcast rank shifts in real time</li>
+              <li>TypeScript-first codebase (97.4% TS) with <code>shadcn/ui</code></li>
+              <li>Stripe Checkout integrated into pay-to-rank outbidding logic</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONNECT / SAFEHOUSE -->
+    <section class="section connect-section" id="connect">
+      <div class="container">
+        <div class="postcard reveal">
+          <div class="postcard-bg" aria-hidden="true"></div>
+          <div class="postcard-left">
+            <span class="section-tag">VICE BEACH SAFEHOUSE // OPEN FOR COLLABORATION</span>
+            <h2>GREETINGS FROM <span>LEONIDA</span></h2>
+            <p>Explore the full source code, architecture docs, and live deployment directly on GitHub and Vercel.</p>
+          </div>
+          <div class="postcard-actions">
+            <a href="https://github.com/chakrabortyriparna284-dotcom" target="_blank" rel="noopener noreferrer" class="btn btn-primary">GITHUB PROFILE ↗</a>
+            <a href="https://github.com/chakrabortyriparna284-dotcom?tab=repositories" target="_blank" rel="noopener noreferrer" class="btn btn-cyan">ALL REPOSITORIES ↗</a>
+            <a href="https://electronic-product-store.vercel.app" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">VOLTTECH LIVE ↗</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p><strong>RIPARNA CHAKRABORTY</strong> — GTA VI Inspired Developer Portfolio</p>
+      <p class="footer-meta">Built from verified repositories at <a href="https://github.com/chakrabortyriparna284-dotcom" target="_blank" rel="noopener noreferrer">@chakrabortyriparna284-dotcom</a></p>
+    </div>
+  </footer>
+
+  <script src="liquid-glass.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
